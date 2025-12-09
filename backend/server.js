@@ -3,21 +3,30 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
-const cors = require("cors");
+const cors = require("cors"); // The CORS middleware is required
 
 const app = express();
 const server = http.createServer(app);
 
-// Configure CORS
+// --- 1. CONFIGURE CORS FOR SOCKET.IO (WebSockets) ---
+// This allows both local development and your live Netlify frontend to connect
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    // FIX: Use an array for multiple origins
+    origin: ["http://localhost:3000", "https://stock-dashboard1.netlify.app"],
     methods: ["GET", "POST"],
   },
 });
 
 app.use(express.json());
-app.use(cors());
+
+// --- 2. CONFIGURE CORS FOR EXPRESS (HTTP API) ---
+// This allows the Netlify frontend to make API calls (like /login)
+app.use(
+  cors({
+    origin: "https://stock-dashboard1.netlify.app",
+  })
+);
 
 // --- In-Memory Data Store ---
 const SUPPORTED_STOCKS = ["GOOG", "TSLA", "AMZN", "META", "NVDA"];
