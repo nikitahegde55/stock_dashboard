@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { io } from "socket.io-client";
 import "./App.css";
 
-const API_URL = "http://localhost:4000";
+const API_URL = "https://stock-dashboard-8cr4.onrender.com";
 const SUPPORTED_STOCKS = ["GOOG", "TSLA", "AMZN", "META", "NVDA"];
 
 function App() {
