@@ -1,0 +1,254 @@
+/* frontend/src/App.css */
+
+/* --- Global Styles and Typography --- */
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e1218; /* Ultra-deep dark background */
+  color: #e0e6e9; /* Soft White Text */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* IMPROVEMENT: Responsive Dashboard Container */
+.dashboard-container {
+  width: 90%;
+  max-width: 1000px; /* Max width to fit comfortably on most screens */
+  margin: 50px auto;
+  padding: 40px;
+
+  background-color: #1a212a;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-header {
+  color: #4fb2d4;
+  border-bottom: 3px solid #4fb2d4;
+  padding-bottom: 20px;
+  margin-bottom: 35px;
+  font-size: 2.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #3a3f47;
+  margin: 30px 0;
+}
+
+/* --- Subscription Controls --- */
+.controls h3 {
+  font-weight: 600;
+  color: #a9b3bb;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+.stock-list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.ticker-button {
+  padding: 10px 25px;
+  border: 1px solid #4a5059;
+  background-color: #282c34;
+  color: #e0e6e9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+
+.ticker-button:hover:not(:disabled) {
+  background-color: #3a3f47;
+  box-shadow: 0 0 10px rgba(79, 178, 212, 0.3);
+}
+
+.ticker-button.subscribed {
+  background-color: #00a86b;
+  color: #1e2125;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(0, 168, 107, 0.5);
+  border-color: #00a86b;
+}
+
+.ticker-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- Stock Table --- */
+.stock-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 25px;
+}
+
+.stock-table th {
+  padding: 15px;
+  text-align: left;
+  background-color: #1a212a;
+  color: #9aa1a8;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #3a3f47;
+}
+
+.stock-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid #3a3f47;
+  background-color: #212831;
+}
+
+.stock-table tbody tr {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+.stock-table tbody tr:hover {
+  background-color: #28303a;
+}
+
+/* --- Price Styling (Mesmerizing Effect) --- */
+
+.stock-table .price {
+  font-weight: 800;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 1.25em;
+  text-align: right;
+  width: 30%;
+  padding-right: 30px;
+}
+
+.stock-table .price-gain {
+  color: #00c853;
+  animation: flash-green 0.3s ease-out;
+}
+
+.stock-table .price-loss {
+  color: #ff5252;
+  animation: flash-red 0.3s ease-out;
+}
+
+@keyframes flash-green {
+  0% {
+    background-color: rgba(0, 200, 83, 0.4);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes flash-red {
+  0% {
+    background-color: rgba(255, 82, 82, 0.4);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* --- Unsubscribe Button Aesthetic --- */
+
+.unsubscribe-button {
+  background: none;
+  border: 1px solid #ff5252;
+  color: #ff5252;
+  font-size: 0.7em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 3px 8px;
+  margin-left: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.6;
+}
+
+.unsubscribe-button:hover {
+  background-color: #ff5252;
+  color: #1e2125;
+  opacity: 1;
+}
+
+/* --- Login Component (Frosted Glass Aesthetic) --- */
+
+.login-container {
+  max-width: 450px;
+  margin: 150px auto;
+  padding: 40px;
+
+  /* GLASSMORPHISM CORE STYLES */
+  background-color: rgba(26, 33, 42, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #4fb2d4;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(79, 178, 212, 0.5);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 20px;
+
+  /* INPUT FIELD AESTHETICS */
+  border: 1px solid #3a3f47;
+  background-color: #1e2125;
+  color: #e0e6e9;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 1.1em;
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+  border-color: #61dafb;
+  outline: none;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 16px;
+  background-color: #61dafb;
+  color: #1e2125;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.25em;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(97, 218, 251, 0.5);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.login-form button:hover {
+  background-color: #4fb2d4;
+  box-shadow: 0 6px 20px rgba(97, 218, 251, 0.7);
+}
+
+.note {
+  margin-top: 25px;
+  font-size: 0.95em;
+  color: #a9b3bb;
+}
